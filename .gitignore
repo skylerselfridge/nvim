@@ -1,5 +1,6 @@
 # Cache objects
 packer_cache/
+packer_compiled.lua
 
 # Crash log
 crash.log
