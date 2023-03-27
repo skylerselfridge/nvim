@@ -14,9 +14,17 @@ return require('packer').startup(function(use)
 	  requires = { {'nvim-lua/plenary.nvim'} }
   }
 
+  -- Load on a combination of conditions: specific filetypes or commands
+  -- Also run code after load (see the "config" key)
+  use {
+    'w0rp/ale',
+    ft = {'sh', 'zsh', 'bash', 'c', 'cpp', 'cmake', 'html', 'markdown', 'racket', 'vim', 'tex'},
+    cmd = 'ALEEnable',
+    config = 'vim.cmd[[ALEEnable]]'
+  }
+
   use({ 'rose-pine/neovim', as = 'rose-pine' })
 
-  vim.cmd('colorscheme rose-pine')
   use('nvim-treesitter/nvim-treesitter', { run =  ':TSUpdate'})
   use ( 'nvim-treesitter/playground' )
   use('theprimeagen/harpoon')
@@ -39,7 +47,7 @@ return require('packer').startup(function(use)
 		  {'hrsh7th/cmp-buffer'},       -- Optional
 		  {'hrsh7th/cmp-path'},         -- Optional
 		  {'saadparwaiz1/cmp_luasnip'}, -- Optional
-		  {'hrsh7th/cmp-nvim-lua'},     -- Optional
+	 	  {'hrsh7th/cmp-nvim-lua'},     -- Optional
 
 		  -- Snippets
 		  {'L3MON4D3/LuaSnip'},             -- Required
@@ -49,5 +57,9 @@ return require('packer').startup(function(use)
   use ('sbdchd/neoformat')
   use ({'danilo-augusto/vim-afterglow', as = 'afterglow' })
   use ('gosukiwi/vim-atom-dark')
-  
+vim.keymap.set("n", "<leader>k", function()
+    vim.cmd(':ALEEnable');
+    vim.cmd(':ALEFix')
+end)
+   
 end)

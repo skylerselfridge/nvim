@@ -4,7 +4,6 @@ vim.keymap.set("n", "<leader>s", function()
 	vim.cmd(':Neoformat');
 	vim.cmd(':w');
 end)
-
 vim.keymap.set('i', '<C-z>', "<c-o>:u<CR>");
 
 vim.keymap.set('n', '<leader>gb', '<C-o>');

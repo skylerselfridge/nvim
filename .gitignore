@@ -1,7 +1,7 @@
 # Cache objects
 packer_cache/
 packer_compiled.lua
-
+node_modules
 # Crash log
 crash.log
 
