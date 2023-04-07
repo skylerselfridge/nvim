@@ -18,7 +18,7 @@ return require('packer').startup(function(use)
   -- Also run code after load (see the "config" key)
   use {
     'w0rp/ale',
-    ft = {'sh', 'zsh', 'bash', 'c', 'cpp', 'cmake', 'html', 'markdown', 'racket', 'vim', 'tex'},
+    ft = {'sh', 'zsh', 'bash', 'c', 'cpp', 'cmake', 'html', 'markdown', 'racket', 'vim','rust', 'tex'},
     cmd = 'ALEEnable',
     config = 'vim.cmd[[ALEEnable]]'
   }
@@ -54,6 +54,16 @@ return require('packer').startup(function(use)
 		  {'rafamadriz/friendly-snippets'}, -- Optional
 	  }
   }
+use({
+    "j-hui/fidget.nvim",
+    config = function()
+      require("fidget").setup()
+    end
+  })
+  -- Snippet engine
+  use('hrsh7th/vim-vsnip')
+  -- Adds extra functionality over rust analyzer
+  use("simrat39/rust-tools.nvim") 
   use ('sbdchd/neoformat')
   use ({'danilo-augusto/vim-afterglow', as = 'afterglow' })
   use ('gosukiwi/vim-atom-dark')
